@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  line-height: 150%;
+  margin: 2%;
+}
+.largeText{
+  font-size:200%;
+  margin:1%;
+  letter-spacing: 2px;
+}
+.mediumText{
+  font-size: 150%;
+  margin: 1%;
+  letter-spacing: 1px;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+.capitalize{
+  text-transform: capitalize;
 }
 .landingScreen{
   width: 100%;
@@ -10,7 +33,6 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
-
 .navBar{
   display: flex;
   flex-direction: row;
@@ -18,7 +40,6 @@
   width: auto;
   align-items: flex-end;
   padding: 3%;
-  
 }
 .navBar li{
   list-style: none;
@@ -32,17 +53,13 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 33%;
-
 }
 .centerTabs{
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 33%;
-  
-  
 }
-
 .rightTabs{
   display: flex;
   flex-direction: row; 
@@ -53,32 +70,21 @@
   display: flex;
   flex-direction: column;
   height: 80vh;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   padding: 5%;
-}
-.large_text{
-  font-size: 45px;
-}
-.medium_text{
-  font-size: 30px;
-}
-.small_text{
-  font-size: 20px;
-}
-.uppercase{
-  text-transform: uppercase;
 }
 .begin_button{
   border: 1px solid black;
   background-color: black;
+  border-radius: 2%;
   color: white;
   padding: 2%;
 }
 .left_title{
   width: 66%;
-  padding: 5%;
-  text-transform: capitalize;
+  margin-top:8%;
+  
 }
 .skills_set{
   display: flex;
@@ -87,16 +93,40 @@
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-
 }
-.width_40{
-  width: 50%;
-  height: 40vh;
-}
-.width_80{
-  width: 100%;
-  height: 40vh;
-}
-.skill_set p{
+.skillBox{
+  height:33vh;
+  margin:1%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.darkBackground{
+  background-color: black;
+  color: white;
+}
+.lightBackground{
+background-color: grey;
+color: black;
+}
+.width_50{
+  width: 46%;
+}
+.width_100{
+  width: 94%;
+}
+.valuesPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.valuesDrag_section{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }

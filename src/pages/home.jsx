@@ -1,4 +1,11 @@
 import "../App.css";
+import React from "react"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { peoplePuzzle } from "../media/people_puzzle.png";
 
 function Home() {
@@ -19,16 +26,16 @@ function Home() {
         </div>
       </ul>
       <div className="homePage_text">
-        <p className="large_text">Get your shit together</p>
-        <p className="small_text uppercase">practice skills from Group Therapy</p>
+        <p className="largeText">Get your shit together</p>
+        <p className="uppercase">practice skills from Group Therapy</p>
         <p className="begin_button">Begin</p>
       </div>
       <div className="skills_section">
-        <p className="large_text left_title">Change your relationship to yourself and others</p>
+        <p className="mediumText capitalize left_title">SKILLS HEADING TEXT</p>
         <div className="skills_set">
-          <p className="medium_text width_40">Values Drag and Drop</p>
-          <p className="medium_text width_40">RAIN</p>
-          <p className="medium_text width_80">Multidimensional experiential avoidance questionnaire</p>
+          <Link to="/values" className="width_50 skillBox lightBackground">Values Drag and Drop</Link>
+          <p className="width_50 skillBox lightBackground">RAIN</p>
+          <p className="width_100 skillBox darkBackground">Multidimensional experiential avoidance questionnaire</p>
         </div>
       </div>
     </div>
