@@ -130,3 +130,39 @@ color: black;
   justify-content: flex-start;
   align-items: flex-start;
 }
+.sortSect{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width:80%;
+  padding:5%;
+}
+.allValues{
+  width: 33%;
+  margin: 2%;
+  padding:2%;
+  height: 80vh;
+  border-radius:3px;
+  border: 1px solid lightgrey;
+}
+.valuesList p{
+  text-align: center;
+  margin: 5%;
+}
+.valuesList li{
+  list-style: none;
+  padding:3%;
+  width:98%;
+  text-align: center;
+  border: 1px solid lightgrey;
+  margin: 2%;
+}
+.valuesList{
+  width: 33%;
+  margin: 2%;
+  padding:2%;
+  height: 80vh;
+  border-radius:3px;
+  border: 1px solid lightgrey;
+}

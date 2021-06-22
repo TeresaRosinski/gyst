@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { peoplePuzzle } from "../media/people_puzzle.png";
 
+
 function Home() {
   return (
     <div className="landingScreen">
