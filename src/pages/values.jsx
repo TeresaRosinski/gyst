@@ -1,26 +1,30 @@
 import "../App.css";
 import React from "react";
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { valuesList } from "./valuesList";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-export default function Values() {
-  //store list items
+import { valuesData } from "./valuesList.js";
+import Column from "./column";
 
-  //Insert List items into DOM
 
+class Values extends React.Component {
+  state = valuesData;
+
+render(){
   return (
     <div className="valuesPage">
-      <p className="largeText">Values Sort:
-      <span>Directions for dragging and dropping values</span>
+      <p className="largeText">
+        Values Sort:
+        <span>Directions for dragging and dropping values</span>
       </p>
 
       <div className="sortSect">
-        <ul className="valuesList" id="allValues">
-          <p className="mediumText">All Values</p>
-          {valuesList.map(({ name, index }) => {
-            return <li key={index}>{name}</li>;
+        
+          {this.state.columnOrder.map((columnId) => {
+            const column = this.state.columns["column-1"];
+            const values = column.valueIDs.map(valueId => this.state.valuesList[valueId]);
+            return <Column key={column.id} column={column} values={values} />
           })}
-        </ul>
+       
         <ul className="valuesList">
           <p className="mediumText">Chosen Values</p>
         </ul>
@@ -28,3 +32,4 @@ export default function Values() {
     </div>
   );
 }
+} export default Values;

@@ -1,19 +1,15 @@
 export const valuesData = {
   valuesList: {
-    "value-1": { id: "value-1", name: "family" },
-    "value-2": { id: "value-2", name: "love" },
-    "value-3": { id: "value-3", name: "adventure" },
+    "value-1": { id: "value-1", name: "Family" },
+    "value-2": { id: "value-2", name: "Love" },
+    "value-3": { id: "value-3", name: "Adventure" },
   },
   columns: {
-    "all-values": {
+    "column-1": {
       id: "column-1",
       title: "All Values",
-      valueIds: ["value-1", "value-2", "value-3"],
+      valueIDs: ["value-1", "value-2", "value-3"],
     },
-    "chosen-values":{
-      id:"column-2",
-      title: "Chosen Values",
-      valueIds:[],
-    }
   },
+  columnOrder:["column-1",],
 };
