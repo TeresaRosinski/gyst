@@ -1,14 +1,24 @@
 import React from "react";
 import "../App.css";
-import Value from "./value";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 export default class Column extends React.Component {
   render() {
     return (
-      <ul className="valuesList" id="allValues">
-        <p className="mediumText">{this.props.column.title}</p>
-        {this.props.values.map(value => <Value key={value.id} value={value} />)}
-      </ul>
+      <Droppable droppableId={this.props.column.id}>
+        {provided => (
+          <ul
+            className="valuesList"
+            innerRef={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {this.props.values.map((value, index) => (
+              <Value key={value.id} value={value} index={index} />
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
     );
   }
 }
