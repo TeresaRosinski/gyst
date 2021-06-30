@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {v4 as uuid} from "uuid"; 
+import { v4 as uuid } from "uuid";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "../App.css";
 import Card from "react-bootstrap/Card";
@@ -8,25 +8,50 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+//mocking out what dtat will look like
+const itemsFromBackend = [
+  { id: uuid(), content: "first value" },
+  { id: uuid(), content: "second value" },
+];
+
+//mocked backend - will need to be editable - each group will be the id + key, will have tittle and list of items - items are dragged
+const columnsFromBackend = [
+  {
+    [uuid()]: {
+      name: "Values",
+      items: [itemsFromBackend],
+    },
+  },
+];
 
 function Values() {
-  
-  
-  //mocked backend - will need to be editable - each group will be the id + key, will have tittle and list of items - items are dragged
-  const columnsFromBackend =[
-    {
-      [uuid()]: {
-        name: 'Values', 
-        items:[]
-      }
-    }
-  ]
-
+  const [columns, setColumns] = useState(columnsFromBackend);
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center', height: '100%'  }}>
-      <DragDropContext onDragEnd={result => console.log(result)}>
-
+    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+      <DragDropContext onDragEnd={(result) => console.log(result)}>
+        {Object.entries(columns).map(([id, column]) => {
+          return (
+            <Droppable droppableId={id}>
+              {(provided, snapshot) => {
+                return (
+                  <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={{
+                      background: snapshot.isDraggingOver
+                        ? "lightblue"
+                        : "lightgrey",
+                      padding: 4,
+                      width: 250,
+                      minHeight: 500,
+                    }}
+                  ></div>
+                );
+              }}
+            </Droppable>
+          );
+        })}
       </DragDropContext>
     </div>
   );
