@@ -1,3 +1,20 @@
+.allColumns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.indvColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.columnContent{
+  border: 1px solid grey;
+  min-height: 90vh;
+  border-radius: 1%;
+  padding: 2%;
+}
 .values_section{
   display: flex;
   flex-direction: row;

@@ -2,23 +2,21 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { v4 as uuid } from "uuid";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import "../App.css";
+import "./newValues.styles.css";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import valuesData from "../data/values";
 
 //mocking out what dtat will look like
-const itemsFromBackend = [
-  { id: uuid(), content: "first value" },
-  { id: uuid(), content: "second value" },
-];
+const importedValues = valuesData;
 
 //mocked backend - will need to be editable - each group will be the id + key, will have tittle and list of items - items are dragged
 const columnsFromBackend = {
   [uuid()]: {
     name: "Values List",
-    items: itemsFromBackend,
+    items: importedValues,
   },
   [uuid()]: {
     name: "Chosen Values",
@@ -65,75 +63,61 @@ function Values() {
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <div className="valuesPage_Full">
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
         {Object.entries(columns).map(([id, column]) => {
           return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                height: "100%",
-              }}
-            >
-              <h2>{column.name}</h2>
-              <div style={{ margin: 8 }}>
-                <Droppable droppableId={id} key={id}>
-                  {(provided, snapshot) => {
-                    return (
-                      <div
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        style={{
-                          background: snapshot.isDraggingOver
-                            ? "lightblue"
-                            : "lightgrey",
-                          padding: 4,
-                          width: 250,
-                          minHeight: 500,
-                        }}
-                      >
-                        {column.items.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item.id}
-                              draggableId={item.id}
-                              index={index}
-                            >
-                              {(provided, snapshot) => {
-                                return (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    style={{
-                                      userSelect: "none",
-                                      padding: 16,
-                                      margin: "0 0 8px 0",
-                                      minHeight: "50px",
-                                      backgroundColor: snapshot.isDragging
-                                        ? "#263B4A"
-                                        : "#456C86",
-                                      color: "white",
-                                      ...provided.draggableProps.style,
-                                    }}
-                                  >
-                                    {item.content}
-                                  </div>
-                                );
-                              }}
-                            </Draggable>
-                          );
-                        })}
-                        {provided.placeholder}
-                      </div>
-                    );
-                  }}
-                </Droppable>
-              </div>
+            <div className="allValues_Column">
+              <p className="columnTitle">{column.name}</p>
+
+              <Droppable droppableId={id} key={id}>
+                {(provided, snapshot) => {
+                  return (
+                    <div
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                      className="centerContent"
+                    >
+                      {column.items.map((item, index) => {
+                        return (
+                          <Draggable
+                            key={item.id}
+                            draggableId={item.id}
+                            index={index}
+                          >
+                            {(provided, snapshot) => {
+                              return (
+                                <div
+                                  className="valueCard"
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  style={{
+                                    height: "100%",
+                                    userSelect: "none",
+                                    borderBottom: "33px solid #031163",
+                                    backgroundColor: snapshot.isDragging
+                                      ? "RGBA(251, 250, 245, .2)"
+                                      : "",
+                                    ...provided.draggableProps.style,
+                                    color: "#FBFAF5",
+                                  }}
+                                >
+                                  <p className="title">{item.content}</p>
+                                  <p className="description">{item.desc}</p>
+                                </div>
+                              );
+                            }}
+                          </Draggable>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  );
+                }}
+              </Droppable>
             </div>
           );
         })}
